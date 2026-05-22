@@ -1,20 +1,11 @@
-package com.example.vehiclecontroldemo
+package com.example.vehiclecontroldemo.ui
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.vehiclecontroldemo.vehicle.ConnectionState
-import com.example.vehiclecontroldemo.vehicle.DrivingMode
+import com.example.vehiclecontroldemo.R
 import com.example.vehiclecontroldemo.viewmodel.VehicleViewModel
-import com.example.vehiclecontroldemo.ui.VehicleStatusFragment
-import com.example.vehiclecontroldemo.ui.VehicleControlFragment
 
 class MainActivity : AppCompatActivity() {
 
