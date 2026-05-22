@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.vehiclecontroldemo.vehicle.ConnectionState
 import com.example.vehiclecontroldemo.vehicle.DrivingMode
 import com.example.vehiclecontroldemo.viewmodel.VehicleViewModel
+import com.example.vehiclecontroldemo.ui.VehicleStatusFragment
+import com.example.vehiclecontroldemo.ui.VehicleControlFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +25,14 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        // 防止 旋转屏幕重复 add fragment
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.statusContainer, VehicleStatusFragment())
+                .replace(R.id.controlContainer, VehicleControlFragment())
+                .commit()
+        }
+/*
         val tvConnection = findViewById<TextView>(R.id.tvConnection)
         val tvSpeed = findViewById<TextView>(R.id.tvSpeed)
         val tvFan = findViewById<TextView>(R.id.tvFan)
@@ -85,5 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 // endregion
+
+ */
     }
 }
