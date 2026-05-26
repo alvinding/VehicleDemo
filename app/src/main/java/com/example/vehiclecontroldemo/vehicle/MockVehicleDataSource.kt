@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 
 class MockVehicleDataSource : VehicleDataSource {
+    // java handler
     private val handler = Handler(Looper.getMainLooper())
     private var listener: VehicleDataSource.SpeedListener? = null
     private var fanSpeed = 1
