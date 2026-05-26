@@ -22,7 +22,7 @@ class VehicleViewModel: ViewModel(), VehicleDataSource.SpeedListener {
     private val _fanSpeed = MutableLiveData(1)
     val fanSpeed: LiveData<Int> = _fanSpeed
 
-    private val _drivingMode = MutableLiveData(DrivingMode.PARKINNG)
+    private val _drivingMode = MutableLiveData(DrivingMode.PARKING)
     val drivingMode: LiveData<DrivingMode> = _drivingMode
 
     val controlsEnabled = MediatorLiveData<Boolean>() // 中介 LiveData
@@ -47,7 +47,7 @@ class VehicleViewModel: ViewModel(), VehicleDataSource.SpeedListener {
 
     private fun updateControlsState() {
         val connected = connectionState.value == ConnectionState.CONNECTED
-        val parked = drivingMode.value == DrivingMode.PARKINNG
+        val parked = drivingMode.value == DrivingMode.PARKING
 
         // 车机连接中 & 停车
         controlsEnabled.value = connected && parked

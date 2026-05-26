@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         rbParking.setOnClickListener {
-            viewModel.setDrivingMode(DrivingMode.PARKINNG)
+            viewModel.setDrivingMode(DrivingMode.PARKING)
         }
         rbDriving.setOnClickListener {
             viewModel.setDrivingMode(DrivingMode.DRIVING)

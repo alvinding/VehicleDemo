@@ -54,7 +54,7 @@ class VehicleControlFragment : Fragment(R.layout.fragment_vehicle_control) { // 
         }
 
         rbParking.setOnClickListener {
-            viewModel.setDrivingMode(DrivingMode.PARKINNG)
+            viewModel.setDrivingMode(DrivingMode.PARKING)
         }
         rbDriving.setOnClickListener {
             viewModel.setDrivingMode(DrivingMode.DRIVING)
