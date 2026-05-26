@@ -8,6 +8,8 @@ class MockVehicleDataSource : VehicleDataSource {
     private val handler = Handler(Looper.getMainLooper())
     private var listener: VehicleDataSource.SpeedListener? = null
     private var fanSpeed = 1
+    // 记录连接状态
+    private var connected = false
 
     private val speedRunnable = object : Runnable {
         override fun run() {
@@ -20,6 +22,9 @@ class MockVehicleDataSource : VehicleDataSource {
     }
 
     override fun connect(listener: VehicleDataSource.SpeedListener) {
+        if (connected) return
+        connected = true
+
         this.listener = listener
 
         listener.onConnectionStateChanged(ConnectionState.CONNECTING)
@@ -31,6 +36,8 @@ class MockVehicleDataSource : VehicleDataSource {
     }
 
     override fun disconnect() {
+        connected = false
+
         handler.removeCallbacks(speedRunnable)
         listener?.onConnectionStateChanged(ConnectionState.DISCONNECTED)
         listener = null

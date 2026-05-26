@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.vehiclecontroldemo.R
 import com.example.vehiclecontroldemo.vehicle.ConnectionState
@@ -27,6 +28,7 @@ class VehicleControlFragment : Fragment(R.layout.fragment_vehicle_control) { // 
         super.onViewCreated(view, savedInstanceState)
 
         val btnConnect = view.findViewById<Button>(R.id.btnConnect)
+        val tvFan = view.findViewById<TextView>(R.id.tvFan)
         val btnPlus = view.findViewById<Button>(R.id.btnPlus)
         val btnMinus = view.findViewById<Button>(R.id.btnMinus)
 
@@ -62,7 +64,9 @@ class VehicleControlFragment : Fragment(R.layout.fragment_vehicle_control) { // 
             viewModel.simulateError()
         }
 
-
+        viewModel.fanSpeed.observe(viewLifecycleOwner) {
+            tvFan.text = "Fan Speed: $it"
+        }
         viewModel.controlsEnabled.observe(viewLifecycleOwner) { enabled ->
             btnPlus.isEnabled = enabled
             btnMinus.isEnabled = enabled
@@ -75,6 +79,9 @@ class VehicleControlFragment : Fragment(R.layout.fragment_vehicle_control) { // 
                 } else {
                     "Connect"
                 }
+
+            // 连接按钮，连接中不可点击
+            btnConnect.isEnabled = state != ConnectionState.CONNECTING
         }
     }
 }

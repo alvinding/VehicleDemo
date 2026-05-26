@@ -22,7 +22,7 @@ class VehicleStatusFragment : Fragment(R.layout.fragment_vehicle_status) {
 
         val tvConnection = view.findViewById<TextView>(R.id.tvConnection)
         val tvSpeed = view.findViewById<TextView>(R.id.tvSpeed)
-        val tvFan = view.findViewById<TextView>(R.id.tvFan)
+
 
         val tvRestriction = view.findViewById<TextView>(R.id.tvRestriction)
 
@@ -32,9 +32,7 @@ class VehicleStatusFragment : Fragment(R.layout.fragment_vehicle_status) {
         viewModel.speed.observe(viewLifecycleOwner) {
             tvSpeed.text = "Speed: ${it.toInt() } km/h"
         }
-        viewModel.fanSpeed.observe(viewLifecycleOwner) {
-            tvFan.text = "Fan Speed: $it"
-        }
+
         viewModel.uiMessage.observe(viewLifecycleOwner) { msg ->
             tvRestriction.text = msg
             // 提示文言的显示和隐藏
